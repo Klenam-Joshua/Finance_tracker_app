@@ -1,0 +1,38 @@
+.login__container{
+    width:80%;
+    margin: auto;
+}
+
+.login__container .input_field_wrapper{
+      width: 100%;
+      margin:1rem 0;
+
+}
+.login__container .input_field_wrapper input , button{
+    display: block;
+    width: 100%;
+    padding:1rem 0.4rem;
+    background-color: #f3f2f1;
+    border:none;
+    outline:none;
+}
+.login__container .input_field_wrapper input::placeholder{
+    font-size: 1rem;
+}
+
+.login__container button {
+       background: var(--color-dark-green);
+       cursor:pointer;
+       color:white;
+       margin-bottom: 1rem;
+   
+
+}
+.login__container p{
+     text-align: center;
+     color:#a2a19f;
+}
+.login__container a{
+    text-decoration: none;
+}
+
