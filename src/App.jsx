@@ -7,6 +7,8 @@ import Navbar from './Components/FormsWrapper/Navbar/Navbar';
 import SignIn from './Pages/SignIn/SignIn';
 import Signup from './Pages/Signup/Signup';
 import Home from './Pages/Home/Home';
+import { useContext } from 'react';
+import { AuthContext } from './Components/Context/AuthContext';
 
 
 
@@ -17,20 +19,27 @@ import "./assets/styles/global.css"
 
 
 
-
 function App() {
  
+const {user,authIsReady} = useContext(AuthContext)
    return(
         <Router>
-          <Navbar>
+              
+                  <Navbar>
+             {           
+                  authIsReady &&
 
         
               <Routes>
-                    <Route exact  path='/login'  element={<SignIn />}/>
-                    <Route  path='/signup'  element={<Signup />}/>
-                    <Route  path='/'  element={<Home/>}/>
+                    <Route exact  path='/login'  element={user ? <Home/>  : <SignIn />}/>
+                    <Route  path='/signup'  element={user ? <Home/> : <Signup />}/>
+                    <Route  path='/' 
+                     element={  user ? <Home  /> : <SignIn/>}/>
               </Routes>
+
+}
               </Navbar>
+              
         </Router>
    )
   

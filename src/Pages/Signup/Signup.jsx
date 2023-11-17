@@ -1,6 +1,16 @@
 import { useState } from "react"
 import FormsWrapper from "../../Components/FormsWrapper/FormsWrapper"
 import { useSignup } from "../../hooks/useSignup";
+import LoadingAnim from "../../Components/LoadingAnim/LoadingAnim";
+import { useContext } from "react";
+import { AuthContext } from "../../Components/Context/AuthContext";
+// react toastify
+
+import { ToastContainer,toast } from "react-toastify";
+
+//
+
+
 
 const Signup = () => {
 
@@ -12,15 +22,14 @@ const Signup = () => {
     
     const SignupData = {
         displayName:userName,
-        password:userEmail,
+        email:userEmail,
         password:userPassword
       }
 
     //custom hooks
 
-    const {isLoading, createUser} = useSignup(SignupData)
+    const {isLoading, createUser, error,success} = useSignup(SignupData)
     
-
 
 
 
@@ -50,15 +59,25 @@ const handleSignUp = (e)=>{
   return (
 
     <FormsWrapper>
+      {
+        success && 
+           <p style={{color:"green", textAlign:"center"}}>
+            user created successfully
+           </p>
+      }
         
     {
         isLoading && 
-        <p>
-                creating user
-        </p>
-       
+         <LoadingAnim />
 
     }
+    {
+      error && 
+      <p  style={{color:"red", textAlign:"center", fontSize:"0.8rem"}}>
+        {error}
+      </p>
+    }
+
             <div  className="login__container">
           <form  id="login_form"  onSubmit={handleSignUp}>
           <div className="input_field_wrapper">

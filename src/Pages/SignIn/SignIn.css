@@ -8,7 +8,7 @@
       margin:1rem 0;
 
 }
-.login__container .input_field_wrapper input , button{
+.login__container .input_field_wrapper input , .login__container button{
     display: block;
     width: 100%;
     padding:1rem 0.4rem;
